@@ -1,6 +1,7 @@
 {
   "name": "unit-converter",
   "version": "0.1.0",
+  "homepage": "https://tg2648.github.io/ninety-nine/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
