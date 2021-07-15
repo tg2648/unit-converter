@@ -7,8 +7,8 @@ import {
   BrowserRouter as Router, Route, Switch
 } from "react-router-dom";
 import { DATA } from "../data";
+import Home from "./Home";
 import InputGroup from "./InputGroup";
-
 
 export default function App() {
   return (
@@ -16,22 +16,7 @@ export default function App() {
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/">
-            <div className='d-grid gap-2 col-lg-5 mx-auto'>
-              <h1 className="display-5">Unit Converter</h1>
-              {/* <ButtonGroup vertical> */}
-              {DATA.map((categoryData, index) => {
-                return (
-                  <LinkContainer key={index} to={'/' + categoryData.categoryId}>
-                    <Button variant='primary' size="lg">
-                      <categoryData.categoryIcon />
-                      {' '}
-                      {categoryData.categoryName}
-                    </Button>
-                  </LinkContainer>
-                )
-              })}
-              {/* </ButtonGroup> */}
-            </div>
+            <Home />
           </Route>
 
           {DATA.map((categoryData, index) => {
