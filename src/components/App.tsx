@@ -2,43 +2,8 @@ import React, { ChangeEvent, useState } from "react";
 import {
   BrowserRouter as Router, Link, Route, Switch
 } from "react-router-dom";
+import { CategoryDataType, DATA, UnitDataType } from "../data";
 import Input from "./Input";
-
-type UnitDataType = {
-  unitId: string,
-  unitName: string,
-  conversionFactor: number,
-}
-
-type CategoryDataType = {
-  categoryId: string,
-  categoryName: string,
-  units: UnitDataType[]
-}
-
-const DATA: CategoryDataType[] = [
-  {
-    'categoryId': 'length',
-    'categoryName': 'Length',
-    'units': [
-      {
-        'unitId': 'meters',
-        'unitName': 'Meters',
-        'conversionFactor': 1
-      },
-      {
-        'unitId': 'centimeters',
-        'unitName': 'Centimeters',
-        'conversionFactor': 100
-      },
-      {
-        'unitId': 'inches',
-        'unitName': 'Inches',
-        'conversionFactor': 39.37
-      },
-    ]
-  }
-]
 
 /**
  * Return conversion factor for a unitId
