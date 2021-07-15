@@ -1,13 +1,13 @@
 import React, { ChangeEvent } from "react";
 
-type InputPropsType = {
+type InputProps = {
   label: string,
   value: string,
   id: string,
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
-const Input: React.FC<InputPropsType> = (props) => {
+const Input: React.FC<InputProps> = (props) => {
 
   return (
     <label>

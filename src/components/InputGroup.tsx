@@ -1,11 +1,11 @@
 import React, { ChangeEvent, useState } from "react";
-import { CategoryDataType, UnitDataType } from "../data";
+import { Category, Unit } from "../data";
 import Input from "./Input";
 
 /**
  * Return conversion factor for a unitId
  */
- const getConversionFactor = (unitId: string, units: UnitDataType[]): number => {
+ const getConversionFactor = (unitId: string, units: Unit[]): number => {
   const unitData = units.find(element => element.unitId === unitId);
   if (unitData) {
     return unitData.conversionFactor;
@@ -14,17 +14,17 @@ import Input from "./Input";
   }
 }
 
-type CategoryPropsType = {
-  data: CategoryDataType
+type InputGroupProps = {
+  data: Category
 }
 
-type StateValueType = {
+type InputGroupState = {
   [index: string]: string,
 }
 
-const Category: React.FC<CategoryPropsType> = (props) => {
+const InputGroup: React.FC<InputGroupProps> = (props) => {
 
-  const initialValues: StateValueType = {}
+  const initialValues: InputGroupState = {}
   props.data.units.forEach(unit => {
     initialValues[unit.unitId] = ''
   });
@@ -37,8 +37,6 @@ const Category: React.FC<CategoryPropsType> = (props) => {
    * @param e change event
    */
   const handleChange = (changedUnitId: string, e: ChangeEvent<HTMLInputElement>) => {
-    console.log('onChange in ', changedUnitId);
-
     let newValues = { ...initialValues };
 
     if (e.target.value) {
@@ -77,4 +75,4 @@ const Category: React.FC<CategoryPropsType> = (props) => {
   )
 }
 
-export default Category;
+export default InputGroup;

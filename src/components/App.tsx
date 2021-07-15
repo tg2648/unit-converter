@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router, Link, Route, Switch
 } from "react-router-dom";
 import { DATA } from "../data";
-import Category from "./Category";
+import InputGroup from "./InputGroup";
 
 
 export default function App() {
@@ -34,7 +34,7 @@ export default function App() {
           {DATA.map((categoryData, index) => {
             return (
               <Route key={index} path={'/' + categoryData.categoryId}>
-                <Category data={categoryData} />
+                <InputGroup data={categoryData} />
               </Route>
             )
           })}

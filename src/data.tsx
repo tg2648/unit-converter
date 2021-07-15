@@ -1,16 +1,16 @@
-export type UnitDataType = {
+export type Unit = {
   unitId: string,
   unitName: string,
   conversionFactor: number,
 }
 
-export type CategoryDataType = {
+export type Category = {
   categoryId: string,
   categoryName: string,
-  units: UnitDataType[]
+  units: Unit[]
 }
 
-export const DATA: CategoryDataType[] = [
+export const DATA: Category[] = [
   {
     'categoryId': 'length',
     'categoryName': 'Length',
