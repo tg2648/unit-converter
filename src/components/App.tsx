@@ -9,37 +9,27 @@ import InputGroup from "./InputGroup";
 export default function App() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          {DATA.map((categoryData, index) => {
-            return (
-              <li key={index}>
-                <Link to={'/' + categoryData.categoryId}>{categoryData.categoryName}</Link>
-              </li>
-            )
-          })}
-        </ul>
-
-        <hr />
-
         <Switch>
           <Route exact path="/">
-            <div>
-              Home
-            </div>
+            <ul>
+              {DATA.map((categoryData, index) => {
+                return (
+                  <li key={index}>
+                    <Link to={'/' + categoryData.categoryId}>{categoryData.categoryName}</Link>
+                  </li>
+                )
+              })}
+            </ul>
           </Route>
           {DATA.map((categoryData, index) => {
             return (
               <Route key={index} path={'/' + categoryData.categoryId}>
+                <Link to="/">Back</Link>
                 <InputGroup data={categoryData} />
               </Route>
             )
           })}
         </Switch>
-      </div>
     </Router>
   )
 }
