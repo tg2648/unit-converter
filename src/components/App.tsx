@@ -15,12 +15,13 @@ export default function App() {
               {DATA.map((categoryData, index) => {
                 return (
                   <li key={index}>
-                    <Link to={'/' + categoryData.categoryId}>{categoryData.categoryName}</Link>
+                    <categoryData.categoryIcon /><Link to={'/' + categoryData.categoryId}>{categoryData.categoryName}</Link>
                   </li>
                 )
               })}
             </ul>
           </Route>
+
           {DATA.map((categoryData, index) => {
             return (
               <Route key={index} path={'/' + categoryData.categoryId}>
@@ -29,6 +30,7 @@ export default function App() {
               </Route>
             )
           })}
+
         </Switch>
     </Router>
   )

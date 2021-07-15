@@ -1,3 +1,11 @@
+/**
+ * Unit definitions.
+ * Search for icons here: https://react-icons.github.io/react-icons/search
+ */
+
+import { IconType } from 'react-icons';
+import { FaRuler, FaWeightHanging } from 'react-icons/fa';
+
 export type Unit = {
   unitId: string,
   unitName: string,
@@ -7,6 +15,7 @@ export type Unit = {
 export type Category = {
   categoryId: string,
   categoryName: string,
+  categoryIcon: IconType,
   units: Unit[]
 }
 
@@ -14,6 +23,7 @@ export const DATA: Category[] = [
   {
     'categoryId': 'length',
     'categoryName': 'Length',
+    'categoryIcon': FaRuler,
     'units': [
       {
         'unitId': 'meters',
@@ -36,6 +46,7 @@ export const DATA: Category[] = [
   {
     'categoryId': 'weight',
     'categoryName': 'Weight',
+    'categoryIcon': FaWeightHanging,
     'units': [
       {
         'unitId': 'kilograms',
