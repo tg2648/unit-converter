@@ -31,5 +31,27 @@ export const DATA: Category[] = [
         'conversionFactor': 39.37
       },
     ]
-  }
+  },
+
+  {
+    'categoryId': 'weight',
+    'categoryName': 'Weight',
+    'units': [
+      {
+        'unitId': 'kilograms',
+        'unitName': 'Kilograms',
+        'conversionFactor': 1
+      },
+      {
+        'unitId': 'grams',
+        'unitName': 'Grams',
+        'conversionFactor': 1000
+      },
+      {
+        'unitId': 'pounds',
+        'unitName': 'Pounds',
+        'conversionFactor': 2.205
+      },
+    ]
+  },
 ]
