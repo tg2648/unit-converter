@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 import {
   BrowserRouter as Router, Link, Route, Switch
 } from "react-router-dom";
-
+import Input from "./Input";
 
 type UnitDataType = {
   unitId: string,
@@ -90,23 +90,6 @@ export default function App() {
   )
 }
 
-type InputPropsType = {
-  label: string,
-  value: string,
-  id: string,
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void
-}
-const Input: React.FC<InputPropsType> = (props) => {
-
-  return (
-    <label>
-      {props.label}
-      <input type="text" value={props.value} onChange={props.handleChange} />
-    </label>
-  )
-}
-
-
 type CategoryPropsType = {
   data: CategoryDataType
 }
@@ -166,5 +149,4 @@ const Category: React.FC<CategoryPropsType> = (props) => {
       }
     </div>
   )
-
 }
