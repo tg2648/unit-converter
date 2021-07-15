@@ -73,7 +73,9 @@ export default function App() {
 
         <Switch>
           <Route exact path="/">
-            <div>Home</div>
+            <div>
+              Home
+            </div>
           </Route>
           {DATA.map((categoryData, index) => {
             return (
@@ -128,7 +130,7 @@ const Category: React.FC<CategoryPropsType> = (props) => {
   const handleChange = (changedUnitId: string, e: ChangeEvent<HTMLInputElement>) => {
     console.log('onChange in ', changedUnitId);
 
-    let newValues = {...initialValues};
+    let newValues = { ...initialValues };
 
     if (e.target.value) {
       const commonValue = 1 / getConversionFactor(changedUnitId, props.data.units) * Number.parseInt(e.target.value);
