@@ -55,23 +55,27 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
   }
 
   return (
-    <div>
+    <>
       {
         props.data.units.map((unit, index) => {
           return (
-            <div key={index}>
-              <Input
-                label={unit.unitName}
-                value={values[unit.unitId]}
-                id={unit.unitId}
-                handleChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(unit.unitId, e)}
-              />
-              <br></br>
+            <div key={index} className="row">
+              <div className="col-4 fs-5">
+                {unit.unitName}
+              </div>
+              <div className="col-8">
+                <Input
+                  label={unit.unitName}
+                  value={values[unit.unitId]}
+                  id={unit.unitId}
+                  handleChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(unit.unitId, e)}
+                />
+              </div>
             </div>
           )
         })
       }
-    </div>
+    </>
   )
 }
 

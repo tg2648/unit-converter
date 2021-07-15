@@ -10,10 +10,7 @@ type InputProps = {
 const Input: React.FC<InputProps> = (props) => {
 
   return (
-    <label>
-      {props.label}
-      <input type="text" value={props.value} onChange={props.handleChange} />
-    </label>
+    <input type="text" className="form-control" value={props.value} onChange={props.handleChange} />
   )
 }
 

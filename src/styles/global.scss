@@ -1,4 +1,8 @@
-/* bootstrap customizations */
+@import "~bootstrap/scss/functions";
 
-/* import bootstrap to set changes */
-@import '~bootstrap/scss/bootstrap.scss';
+/* Customizations */
+$primary: rgb(165, 59, 165);
+$body-bg: tint-color($primary, 80);
+
+/* Import bootstrap to set changes */
+@import '~bootstrap/scss/bootstrap';
