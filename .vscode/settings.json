@@ -1,0 +1,9 @@
+{
+    "[typescriptreact]" : {
+        "editor.tabSize": 2,
+        "editor.codeActionsOnSave": {
+            "source.sortImports": true,
+            "source.organizeImports": true,
+        }
+    }
+}

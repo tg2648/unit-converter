@@ -1,9 +1,6 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+  BrowserRouter as Router, Link, Route, Switch
 } from "react-router-dom";
 
 // This site has 3 pages, all of which are rendered
@@ -42,7 +39,7 @@ export default function BasicExample() {
         */}
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Area />
           </Route>
           <Route path="/about">
             <About />
@@ -59,12 +56,68 @@ export default function BasicExample() {
 // You can think of these components as "pages"
 // in your app.
 
-function Home() {
+function Area() {
+  type ValueType = {
+    [index: string]: string,
+  }
+
+  const [values, setValues] = useState<ValueType>({ 'meters': '', 'inches': '' });
+
+  type ConversionType = {
+    [index: string]: number,
+  }
+
+  const conversionFactors: ConversionType = {
+    'meters': 1,
+    'inches': 39.37,
+  }
+
+  const handleChange = (id: 'meters' | 'inches', e: ChangeEvent<HTMLInputElement>) => {
+
+    let newValues: ValueType = {
+      'meters': '',
+      'inches': '',
+    }
+
+    if (e.target.value) {
+      const commonValue = 1 / conversionFactors[id] * Number.parseInt(e.target.value);
+      // console.log('commonValue', commonValue);
+
+      for (const unit in newValues) {
+        if (unit === id) {
+          newValues[unit] = e.target.value;
+        } else {
+          newValues[unit] = Number(commonValue * conversionFactors[unit]).toFixed(2).toString();
+        }
+      }
+    }
+
+    setValues(newValues);
+  }
+
   return (
-    <div>
-      <h2>Home</h2>
-    </div>
+    <>
+      <Input label="Meters" value={values.meters} id="meters" handleChange={(e: ChangeEvent<HTMLInputElement>) => handleChange('meters', e)} />
+      <Input label="Inches" value={values.inches} id="inches" handleChange={(e: ChangeEvent<HTMLInputElement>) => handleChange('inches', e)} />
+    </>
   );
+}
+
+type InputPropsType = {
+  label: string,
+  value: string,
+  id: string,
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void
+}
+
+const Input: React.FC<InputPropsType> = (props) => {
+
+  return (
+    <label>
+      {props.label}
+      <input type="text" value={props.value} onChange={props.handleChange} />
+    </label>
+  )
 }
 
 function About() {
