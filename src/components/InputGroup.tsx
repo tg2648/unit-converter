@@ -15,7 +15,8 @@ const getConversionFactor = (unitId: string, units: Unit[]): number => {
 }
 
 type InputGroupProps = {
-  data: Category
+  data: Category,
+  showToast: () => void,
 }
 
 type InputGroupState = {
@@ -60,8 +61,6 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
       currentDisplayValue = currentDisplayValue + '.';
     }
 
-    console.log(e.target.value, currentNumValue, currentDisplayValue);
-
     if (e.target.value) {
       // If input is not empty, calculate conversions. Otherwise, reset values to initial values
 
@@ -94,11 +93,12 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
 
     if (value) {
       // Do not copy `.000` for whole numbers
-      //parseFloat().toString() to ignore trailing zeroes
+      // parseFloat().toString() to ignore trailing zeroes
       const valueStr = value % 10 ? parseFloat(value.toFixed(3)).toString() : value.toFixed(0).toString()
 
       navigator.clipboard.writeText(valueStr).then(() => {
         console.log('Copied to clipboard!');
+        props.showToast();
       }, (error) => {
         console.log('Copy failed: ', error);
       });
