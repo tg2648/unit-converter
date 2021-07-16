@@ -36,6 +36,11 @@ export const DATA: Category[] = [
         'conversionFactor': 100
       },
       {
+        'unitId': 'miles',
+        'unitName': 'Miles',
+        'conversionFactor': 0.000621371
+      },
+      {
         'unitId': 'feet',
         'unitName': 'Feet',
         'conversionFactor': 3.281
@@ -48,7 +53,7 @@ export const DATA: Category[] = [
       {
         'unitId': 'inches',
         'unitName': 'Inches',
-        'conversionFactor': 39.3701
+        'conversionFactor': 39.370078740157
       },
     ]
   },
