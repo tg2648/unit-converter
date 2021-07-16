@@ -48,7 +48,7 @@ export const DATA: Category[] = [
       {
         'unitId': 'inches',
         'unitName': 'Inches',
-        'conversionFactor': 39.37
+        'conversionFactor': 39.3701
       },
     ]
   },
