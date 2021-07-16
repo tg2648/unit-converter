@@ -1,15 +1,32 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, MouseEvent } from "react";
+import Button from 'react-bootstrap/Button';
+import FormControl from 'react-bootstrap/FormControl';
+import InputGroup from 'react-bootstrap/InputGroup';
+import { FaCopy } from 'react-icons/fa';
+
 
 type InputProps = {
   value: string,
   id: string,
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void,
+  handleCopy: (e: MouseEvent<HTMLButtonElement>) => void,
 }
+
 
 const Input: React.FC<InputProps> = (props) => {
 
   return (
-    <input type="text" inputMode="decimal" className="form-control" value={props.value} onChange={props.handleChange} />
+    <InputGroup>
+      <FormControl
+        inputMode="decimal"
+        value={props.value}
+        onChange={props.handleChange}
+      />
+      <Button variant="outline-primary" onClick={props.handleCopy}>
+        <FaCopy/>
+      </Button>
+    </InputGroup>
+    // <input type="text" inputMode="decimal" className="form-control" value={props.value} onChange={props.handleChange} />
   )
 }
 

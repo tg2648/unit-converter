@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, MouseEvent, useState } from "react";
 import { Category, Unit } from "../data";
 import Input from "./Input";
 
@@ -39,19 +39,34 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
   const handleChange = (changedUnitId: string, e: ChangeEvent<HTMLInputElement>) => {
     let newValues = { ...initialValues };
 
+    let currentValue = Number(e.target.value);
+
     if (e.target.value) {
-      const commonValue = 1 / getConversionFactor(changedUnitId, props.data.units) * Number.parseInt(e.target.value);
+      const commonValue = 1 / getConversionFactor(changedUnitId, props.data.units) * currentValue;
 
       for (const unitId in newValues) {
         if (unitId === changedUnitId) {
-          newValues[unitId] = e.target.value;
+          newValues[unitId] = currentValue.toLocaleString();
         } else {
-          newValues[unitId] = Number(commonValue * getConversionFactor(unitId, props.data.units)).toFixed(2).toString();
+          newValues[unitId] = Number(commonValue * getConversionFactor(unitId, props.data.units)).toLocaleString();
         }
       }
     }
 
     setValues(newValues);
+  }
+
+  /**
+   * Event handler for Input's copy buttons. Copies input field contents to clipboard.
+   * @param unitId unitId of the corresponding input field
+   * @param e onClick event
+   */
+  const handleCopyButtonClick = (unitId: string, e: MouseEvent<HTMLButtonElement>) => {
+    navigator.clipboard.writeText(values[unitId]).then(() => {
+      console.log('Copied to clipboard!');
+    }, (error) => {
+      console.log('Copy failed: ', error);
+    });
   }
 
   return (
@@ -68,6 +83,7 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
                   value={values[unit.unitId]}
                   id={unit.unitId}
                   handleChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(unit.unitId, e)}
+                  handleCopy={(e: MouseEvent<HTMLButtonElement>) => handleCopyButtonClick(unit.unitId, e)}
                 />
               </div>
             </div>
