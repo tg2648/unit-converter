@@ -4,7 +4,7 @@
  */
 
 import { IconType } from 'react-icons';
-import { FaRuler, FaWeightHanging } from 'react-icons/fa';
+import { FaMugHot, FaRuler, FaWeightHanging } from 'react-icons/fa';
 
 export type Unit = {
   unitId: string,
@@ -36,6 +36,16 @@ export const DATA: Category[] = [
         'conversionFactor': 100
       },
       {
+        'unitId': 'feet',
+        'unitName': 'Feet',
+        'conversionFactor': 3.281
+      },
+      {
+        'unitId': 'yard',
+        'unitName': 'Yard',
+        'conversionFactor': 1.094
+      },
+      {
         'unitId': 'inches',
         'unitName': 'Inches',
         'conversionFactor': 39.37
@@ -44,8 +54,8 @@ export const DATA: Category[] = [
   },
 
   {
-    'categoryId': 'weight',
-    'categoryName': 'Weight',
+    'categoryId': 'mass',
+    'categoryName': 'Mass',
     'categoryIcon': FaWeightHanging,
     'units': [
       {
@@ -62,6 +72,34 @@ export const DATA: Category[] = [
         'unitId': 'pounds',
         'unitName': 'Pounds',
         'conversionFactor': 2.205
+      },
+      {
+        'unitId': 'ounce',
+        'unitName': 'Ounce',
+        'conversionFactor': 35.274
+      },
+    ]
+  },
+
+  {
+    'categoryId': 'volume',
+    'categoryName': 'Volume',
+    'categoryIcon': FaMugHot,
+    'units': [
+      {
+        'unitId': 'liters',
+        'unitName': 'Liters',
+        'conversionFactor': 1
+      },
+      {
+        'unitId': 'gallons',
+        'unitName': 'Gallons',
+        'conversionFactor': 0.264
+      },
+      {
+        'unitId': 'cup',
+        'unitName': 'Cup',
+        'conversionFactor': 4.167
       },
     ]
   },
