@@ -19,36 +19,64 @@ type InputGroupProps = {
 }
 
 type InputGroupState = {
-  [index: string]: string,
+  [id: string]: {
+    numValue: number | undefined,
+    displayValue: string
+  },
 }
 
 const InputGroup: React.FC<InputGroupProps> = (props) => {
 
   const initialValues: InputGroupState = {}
   props.data.units.forEach(unit => {
-    initialValues[unit.unitId] = ''
+    initialValues[unit.unitId] = {
+      numValue: undefined,
+      displayValue: '',
+    };
   });
 
   const [values, setValues] = useState(initialValues);
 
   /**
    * onChange event handler
-   * @param changedUnitId id of the changed unit
+   * @param changedUnitId id of the unit whose input field changed
    * @param e change event
    */
   const handleChange = (changedUnitId: string, e: ChangeEvent<HTMLInputElement>) => {
+
     let newValues = { ...initialValues };
 
-    let currentValue = Number(e.target.value);
+    // Few edge cases to consider
+    // 1. Since input fields are rendered with thousand separators
+    //    and e.target.value is a string, remove separators
+    // 2. When typing a decimal value, text entered with a dot at the end
+    //    needs to be interpreted as a valid number
+
+    let currentNumValue = Number(e.target.value.replaceAll(',', ''));
+    let currentDisplayValue = currentNumValue.toLocaleString();
+
+    const lastChar = e.target.value[e.target.value.length - 1];
+    if (lastChar === '.') {
+      currentDisplayValue = currentDisplayValue + '.';
+    }
+
+    console.log(e.target.value, currentNumValue, currentDisplayValue);
 
     if (e.target.value) {
-      const commonValue = 1 / getConversionFactor(changedUnitId, props.data.units) * currentValue;
+      // If input is not empty, calculate conversions. Otherwise, reset values to initial values
+
+      const commonValue = 1 / getConversionFactor(changedUnitId, props.data.units) * currentNumValue;
 
       for (const unitId in newValues) {
         if (unitId === changedUnitId) {
-          newValues[unitId] = currentValue.toLocaleString();
+          // Value for the input field currently typed to
+          newValues[unitId].numValue = currentNumValue;
+          newValues[unitId].displayValue = currentDisplayValue;
         } else {
-          newValues[unitId] = Number(commonValue * getConversionFactor(unitId, props.data.units)).toLocaleString();
+          // Values for all others input fields
+          let calc = commonValue * getConversionFactor(unitId, props.data.units);
+          newValues[unitId].numValue = calc;
+          newValues[unitId].displayValue = calc.toLocaleString();
         }
       }
     }
@@ -62,11 +90,19 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
    * @param e onClick event
    */
   const handleCopyButtonClick = (unitId: string, e: MouseEvent<HTMLButtonElement>) => {
-    navigator.clipboard.writeText(values[unitId]).then(() => {
-      console.log('Copied to clipboard!');
-    }, (error) => {
-      console.log('Copy failed: ', error);
-    });
+    const value = values[unitId].numValue;
+
+    if (value) {
+      // Do not copy `.000` for whole numbers
+      //parseFloat().toString() to ignore trailing zeroes
+      const valueStr = value % 10 ? parseFloat(value.toFixed(3)).toString() : value.toFixed(0).toString()
+
+      navigator.clipboard.writeText(valueStr).then(() => {
+        console.log('Copied to clipboard!');
+      }, (error) => {
+        console.log('Copy failed: ', error);
+      });
+    }
   }
 
   return (
@@ -80,7 +116,7 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
               </div>
               <div className="col-8">
                 <Input
-                  value={values[unit.unitId]}
+                  value={values[unit.unitId].displayValue}
                   id={unit.unitId}
                   handleChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(unit.unitId, e)}
                   handleCopy={(e: MouseEvent<HTMLButtonElement>) => handleCopyButtonClick(unit.unitId, e)}

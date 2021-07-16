@@ -26,7 +26,6 @@ const Input: React.FC<InputProps> = (props) => {
         <FaCopy/>
       </Button>
     </InputGroup>
-    // <input type="text" inputMode="decimal" className="form-control" value={props.value} onChange={props.handleChange} />
   )
 }
 
