@@ -71,7 +71,7 @@ export const DATA: Category[] = [
       {
         'unitId': 'pounds',
         'unitName': 'Pounds',
-        'conversionFactor': 2.205
+        'conversionFactor': 2.20462
       },
       {
         'unitId': 'ounce',
@@ -94,12 +94,27 @@ export const DATA: Category[] = [
       {
         'unitId': 'gallons',
         'unitName': 'Gallons',
-        'conversionFactor': 0.264
+        'conversionFactor': 0.264172
+      },
+      {
+        'unitId': 'quart',
+        'unitName': 'Quart',
+        'conversionFactor': 1.05669
+      },
+      {
+        'unitId': 'pint',
+        'unitName': 'Pint',
+        'conversionFactor': 2.11338
       },
       {
         'unitId': 'cup',
         'unitName': 'Cup',
-        'conversionFactor': 4.167
+        'conversionFactor': 4.16667
+      },
+      {
+        'unitId': 'ounce',
+        'unitName': 'Ounce',
+        'conversionFactor': 33.814
       },
     ]
   },
