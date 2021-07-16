@@ -5,7 +5,7 @@ import Input from "./Input";
 /**
  * Return conversion factor for a unitId
  */
- const getConversionFactor = (unitId: string, units: Unit[]): number => {
+const getConversionFactor = (unitId: string, units: Unit[]): number => {
   const unitData = units.find(element => element.unitId === unitId);
   if (unitData) {
     return unitData.conversionFactor;
@@ -65,7 +65,6 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
               </div>
               <div className="col-8">
                 <Input
-                  label={unit.unitName}
                   value={values[unit.unitId]}
                   id={unit.unitId}
                   handleChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(unit.unitId, e)}

@@ -1,7 +1,6 @@
 import React, { ChangeEvent } from "react";
 
 type InputProps = {
-  label: string,
   value: string,
   id: string,
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void
