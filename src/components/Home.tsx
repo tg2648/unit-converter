@@ -2,6 +2,7 @@ import React from "react";
 import Button from 'react-bootstrap/Button';
 import { LinkContainer } from 'react-router-bootstrap';
 import { DATA } from "../data";
+import Footer from "./Footer";
 
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
           </LinkContainer>
         )
       })}
+      <Footer/>
     </div>
   )
 }
