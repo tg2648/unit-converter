@@ -47,7 +47,7 @@ export const DATA: Category[] = [
       },
       {
         'unitId': 'yard',
-        'unitName': 'Yard',
+        'unitName': 'Yards',
         'conversionFactor': 1.094
       },
       {
@@ -80,7 +80,7 @@ export const DATA: Category[] = [
       },
       {
         'unitId': 'ounce',
-        'unitName': 'Ounce',
+        'unitName': 'Ounces',
         'conversionFactor': 35.274
       },
     ]
@@ -103,22 +103,22 @@ export const DATA: Category[] = [
       },
       {
         'unitId': 'quart',
-        'unitName': 'Quart',
+        'unitName': 'Quarts',
         'conversionFactor': 1.05669
       },
       {
         'unitId': 'pint',
-        'unitName': 'Pint',
+        'unitName': 'Pints',
         'conversionFactor': 2.11338
       },
       {
         'unitId': 'cup',
-        'unitName': 'Cup',
+        'unitName': 'Cups',
         'conversionFactor': 4.16667
       },
       {
         'unitId': 'ounce',
-        'unitName': 'Ounce',
+        'unitName': 'Ounces',
         'conversionFactor': 33.814
       },
     ]
