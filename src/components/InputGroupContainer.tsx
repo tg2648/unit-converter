@@ -12,9 +12,9 @@ type InputGroupContainerProps = {
 
 const InputGroupContainer: React.FC<InputGroupContainerProps> = (props) => {
   return (
-    <div className='d-grid gap-2 col-lg-5 mx-auto'>
-      <LinkContainer to='/'>
-        <Button variant='primary' size="lg">
+    <div className='mt-2 d-grid gap-2 col-lg-5 mx-auto'>
+      <LinkContainer exact={true} to='/'>
+        <Button variant='primary' size='lg'>
           <FaArrowLeft />
           {' '}
           Back
