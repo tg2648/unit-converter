@@ -18,6 +18,7 @@ const Input: React.FC<InputProps> = (props) => {
   return (
     <InputGroup>
       <FormControl
+        id={props.id}
         inputMode="decimal"
         value={props.value}
         onChange={props.handleChange}
