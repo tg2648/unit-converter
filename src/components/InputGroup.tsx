@@ -111,9 +111,9 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
         props.data.units.map((unit, index) => {
           return (
             <div key={index} className="row">
-              <div className="col-4 fs-5">
+              <label htmlFor={unit.unitId} className="col-4 fs-5">
                 {unit.unitName}
-              </div>
+              </label>
               <div className="col-8">
                 <Input
                   value={values[unit.unitId].displayValue}
