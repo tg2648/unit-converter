@@ -26,6 +26,11 @@ export const DATA: Category[] = [
     'categoryIcon': FaRuler,
     'units': [
       {
+        'unitId': 'kilometers',
+        'unitName': 'Kilometers',
+        'conversionFactor': 0.001
+      },
+      {
         'unitId': 'meters',
         'unitName': 'Meters',
         'conversionFactor': 1
@@ -34,6 +39,11 @@ export const DATA: Category[] = [
         'unitId': 'centimeters',
         'unitName': 'Centimeters',
         'conversionFactor': 100
+      },
+      {
+        'unitId': 'millimeters',
+        'unitName': 'Millimeters',
+        'conversionFactor': 1000
       },
       {
         'unitId': 'miles',
@@ -97,6 +107,11 @@ export const DATA: Category[] = [
         'conversionFactor': 1
       },
       {
+        'unitId': 'milliliter',
+        'unitName': 'Milliliter',
+        'conversionFactor': 1000
+      },
+      {
         'unitId': 'gallons',
         'unitName': 'Gallons',
         'conversionFactor': 0.264172
@@ -114,7 +129,7 @@ export const DATA: Category[] = [
       {
         'unitId': 'cup',
         'unitName': 'Cups',
-        'conversionFactor': 4.16667
+        'conversionFactor': 4.22675
       },
       {
         'unitId': 'ounce',
