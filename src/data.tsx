@@ -46,6 +46,11 @@ export const DATA: Category[] = [
         'conversionFactor': 1000
       },
       {
+        'unitId': 'separator',
+        'unitName': '',
+        'conversionFactor': 0
+      },
+      {
         'unitId': 'miles',
         'unitName': 'Miles',
         'conversionFactor': 0.000621371
@@ -84,6 +89,11 @@ export const DATA: Category[] = [
         'conversionFactor': 1000
       },
       {
+        'unitId': 'separator',
+        'unitName': '',
+        'conversionFactor': 0
+      },
+      {
         'unitId': 'pounds',
         'unitName': 'Pounds',
         'conversionFactor': 2.20462
@@ -110,6 +120,11 @@ export const DATA: Category[] = [
         'unitId': 'milliliter',
         'unitName': 'Milliliter',
         'conversionFactor': 1000
+      },
+      {
+        'unitId': 'separator',
+        'unitName': '',
+        'conversionFactor': 0
       },
       {
         'unitId': 'gallons',

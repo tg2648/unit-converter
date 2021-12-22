@@ -109,21 +109,27 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
     <>
       {
         props.data.units.map((unit, index) => {
-          return (
-            <div key={index} className="row">
-              <label htmlFor={unit.unitId} className="col-4 fs-5">
-                {unit.unitName}
-              </label>
-              <div className="col-8">
-                <Input
-                  value={values[unit.unitId].displayValue}
-                  id={unit.unitId}
-                  handleChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(unit.unitId, e)}
-                  handleCopy={(e: MouseEvent<HTMLButtonElement>) => handleCopyButtonClick(unit.unitId, e)}
-                />
+          if (unit.unitId === "separator") {
+            return (
+              <hr key={index} />
+            )
+          } else {
+            return (
+              <div key={index} className="row">
+                <label htmlFor={unit.unitId} className="col-4 fs-5">
+                  {unit.unitName}
+                </label>
+                <div className="col-8">
+                  <Input
+                    value={values[unit.unitId].displayValue}
+                    id={unit.unitId}
+                    handleChange={(e: ChangeEvent<HTMLInputElement>) => handleChange(unit.unitId, e)}
+                    handleCopy={(e: MouseEvent<HTMLButtonElement>) => handleCopyButtonClick(unit.unitId, e)}
+                  />
+                </div>
               </div>
-            </div>
-          )
+            )
+          }
         })
       }
     </>
