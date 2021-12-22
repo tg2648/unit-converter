@@ -35,10 +35,11 @@ const InputGroupContainer: React.FC<InputGroupContainerProps> = (props) => {
         }}
       >
         <Toast
+          animation={false}
           show={toastVisible}
           onClose={() => setToastVisible(false)}
           autohide={true}
-          delay={1500}
+          delay={2000}
           className='bg-success text-white'
         >
           <Toast.Body >Copied to clipboard</Toast.Body>
