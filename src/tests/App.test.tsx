@@ -44,7 +44,9 @@ test('navigation to unit categories renders unit names', () => {
   DATA.forEach(unitCategory => {
     userEvent.click(screen.getByText(unitCategory.categoryName));
     unitCategory.units.forEach(unit => {
-      expect(screen.getByText(unit.unitName)).toBeInTheDocument();
+      if (unit.unitId !== 'separator') {
+        expect(screen.getByText(unit.unitName)).toBeInTheDocument();
+      }
     })
     userEvent.click(screen.getByText(/back/i));
   });
