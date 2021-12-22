@@ -22,6 +22,7 @@ const Input: React.FC<InputProps> = (props) => {
         inputMode="decimal"
         value={props.value}
         onChange={props.handleChange}
+        autoComplete="off"
       />
       <Button variant="outline-primary" onClick={props.handleCopy}>
         <FaCopy/>
