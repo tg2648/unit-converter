@@ -79,6 +79,11 @@ export const DATA: Category[] = [
     'categoryIcon': FaWeightHanging,
     'units': [
       {
+        'unitId': 'metricton',
+        'unitName': 'Metric Ton',
+        'conversionFactor': 0.001
+      },
+      {
         'unitId': 'kilograms',
         'unitName': 'Kilograms',
         'conversionFactor': 1
@@ -92,6 +97,11 @@ export const DATA: Category[] = [
         'unitId': 'separator',
         'unitName': '',
         'conversionFactor': 0
+      },
+      {
+        'unitId': 'uston',
+        'unitName': 'US Ton',
+        'conversionFactor': 0.00110231
       },
       {
         'unitId': 'pounds',
