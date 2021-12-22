@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import App from '../components/App';
-import { DATA } from "../data";
+import { DATA } from '../data';
 
 
 const render = (ui: JSX.Element, {route = '/'} = {}) => {

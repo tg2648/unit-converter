@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Toast from 'react-bootstrap/Toast';
 import { FaArrowLeft } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Category } from "../data";
-import InputGroup from "./InputGroup";
+import { Category } from '../data';
+import InputGroup from './InputGroup';
 
 
 type InputGroupContainerProps = {

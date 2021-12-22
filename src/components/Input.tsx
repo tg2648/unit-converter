@@ -1,4 +1,4 @@
-import React, { ChangeEvent, MouseEvent } from "react";
+import React, { ChangeEvent, MouseEvent } from 'react';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -19,12 +19,12 @@ const Input: React.FC<InputProps> = (props) => {
     <InputGroup>
       <FormControl
         id={props.id}
-        inputMode="decimal"
+        inputMode='decimal'
         value={props.value}
         onChange={props.handleChange}
-        autoComplete="off"
+        autoComplete='off'
       />
-      <Button variant="outline-primary" onClick={props.handleCopy}>
+      <Button variant='outline-primary' onClick={props.handleCopy}>
         <FaCopy/>
       </Button>
     </InputGroup>

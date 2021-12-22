@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router
 } from 'react-router-dom';
 import Home from '../components/Home';
-import { DATA } from "../data";
+import { DATA } from '../data';
 
 
 const render = (ui: JSX.Element, {route = '/'} = {}) => {

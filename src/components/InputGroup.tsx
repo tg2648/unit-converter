@@ -1,6 +1,6 @@
-import React, { ChangeEvent, MouseEvent, useState } from "react";
-import { Category, Unit } from "../data";
-import Input from "./Input";
+import React, { ChangeEvent, MouseEvent, useState } from 'react';
+import { Category, Unit } from '../data';
+import Input from './Input';
 
 /**
  * Return conversion factor for a unitId
@@ -109,17 +109,17 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
     <>
       {
         props.data.units.map((unit, index) => {
-          if (unit.unitId === "separator") {
+          if (unit.unitId === 'separator') {
             return (
               <hr key={index} />
             )
           } else {
             return (
-              <div key={index} className="row">
-                <label htmlFor={unit.unitId} className="col-4 fs-5">
+              <div key={index} className='row'>
+                <label htmlFor={unit.unitId} className='col-4 fs-5'>
                   {unit.unitName}
                 </label>
-                <div className="col-8">
+                <div className='col-8'>
                   <Input
                     value={values[unit.unitId].displayValue}
                     id={unit.unitId}
