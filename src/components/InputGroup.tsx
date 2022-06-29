@@ -38,6 +38,8 @@ type InputGroupState = {
   },
 }
 
+let invalidChars = /[^0-9.,-]/;
+
 const InputGroup: React.FC<InputGroupProps> = (props) => {
 
   const initialValues: InputGroupState = {}
@@ -67,6 +69,14 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
     //    needs to be interpreted as a valid number
     // 3. When typing a negative number and the input only contains `-`,
     //    do not do calculations
+    // 4. When typing a non-numerical character or not a `-` or `.`,
+    //    do not do calculations
+
+    if (invalidChars.test(e.target.value)) {
+      newValues[changedUnitId].displayValue = e.target.value;
+      setValues(newValues);
+      return;
+    }
 
     if (e.target.value[0] === '-' && e.target.value.length === 1) {
       newValues[changedUnitId].displayValue = '-';
