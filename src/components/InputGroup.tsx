@@ -65,6 +65,14 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
     //    and e.target.value is a string, remove separators
     // 2. When typing a decimal value, text entered with a dot at the end
     //    needs to be interpreted as a valid number
+    // 3. When typing a negative number and the input only contains `-`,
+    //    do not do calculations
+
+    if (e.target.value[0] === '-' && e.target.value.length === 1) {
+      newValues[changedUnitId].displayValue = '-';
+      setValues(newValues);
+      return;
+    }
 
     let currentNumValue = Number(e.target.value.replaceAll(',', ''));
     let currentDisplayValue = currentNumValue.toLocaleString();
@@ -78,6 +86,9 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
       // If input is not empty, calculate conversions. Otherwise, reset values to initial values
 
       if (props.data.categoryId === 'temperature') {
+        // Temperature is handled differently because the calculations are
+        // assymetrical and the order of operations matters
+
         newValues[changedUnitId].numValue = currentNumValue;
         newValues[changedUnitId].displayValue = currentDisplayValue;
 
@@ -112,8 +123,8 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
       }
     }
 
-      setValues(newValues);
-    }
+    setValues(newValues);
+  }
 
   /**
    * Event handler for Input's copy buttons. Copies input field contents to clipboard.
