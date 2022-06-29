@@ -14,6 +14,18 @@ const getConversionFactor = (unitId: string, units: Unit[]): number => {
   }
 }
 
+/**
+ * Return conversion factor for a unitId
+ */
+const getConstantScale = (unitId: string, units: Unit[]): number => {
+  const unitData = units.find(element => element.unitId === unitId);
+  if (unitData) {
+    return unitData.constantScale ?? 0;
+  } else {
+    return 0;
+  }
+}
+
 type InputGroupProps = {
   data: Category,
   showToast: () => void,
@@ -40,6 +52,7 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
 
   /**
    * onChange event handler
+   * @param categoryId id of the unit category
    * @param changedUnitId id of the unit whose input field changed
    * @param e change event
    */
@@ -64,24 +77,43 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
     if (e.target.value) {
       // If input is not empty, calculate conversions. Otherwise, reset values to initial values
 
-      const commonValue = 1 / getConversionFactor(changedUnitId, props.data.units) * currentNumValue;
+      if (props.data.categoryId === 'temperature') {
+        newValues[changedUnitId].numValue = currentNumValue;
+        newValues[changedUnitId].displayValue = currentDisplayValue;
 
-      for (const unitId in newValues) {
-        if (unitId === changedUnitId) {
-          // Value for the input field currently typed to
-          newValues[unitId].numValue = currentNumValue;
-          newValues[unitId].displayValue = currentDisplayValue;
+        let otherTempUnit = changedUnitId === 'celsius' ? 'fahrenheit' : 'celsius';
+
+        let calc;
+        if (changedUnitId === 'celsius') {
+          calc = (currentNumValue * getConversionFactor(otherTempUnit, props.data.units)) + getConstantScale(otherTempUnit, props.data.units);
         } else {
-          // Values for all others input fields
-          let calc = commonValue * getConversionFactor(unitId, props.data.units);
-          newValues[unitId].numValue = calc;
-          newValues[unitId].displayValue = calc.toLocaleString();
+          calc = (currentNumValue + getConstantScale(otherTempUnit, props.data.units)) * getConversionFactor(otherTempUnit, props.data.units);
+        }
+
+        newValues[otherTempUnit].numValue = calc;
+        newValues[otherTempUnit].displayValue = calc.toLocaleString();
+
+      } else {
+
+        const commonValue = 1 / getConversionFactor(changedUnitId, props.data.units) * currentNumValue;
+
+        for (const unitId in newValues) {
+          if (unitId === changedUnitId) {
+            // Value for the input field currently typed to
+            newValues[unitId].numValue = currentNumValue;
+            newValues[unitId].displayValue = currentDisplayValue;
+          } else {
+            // Values for all others input fields
+            let calc = commonValue * getConversionFactor(unitId, props.data.units);
+            newValues[unitId].numValue = calc;
+            newValues[unitId].displayValue = calc.toLocaleString();
+          }
         }
       }
     }
 
-    setValues(newValues);
-  }
+      setValues(newValues);
+    }
 
   /**
    * Event handler for Input's copy buttons. Copies input field contents to clipboard.
