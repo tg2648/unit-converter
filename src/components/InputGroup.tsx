@@ -54,7 +54,6 @@ const InputGroup: React.FC<InputGroupProps> = (props) => {
 
   /**
    * onChange event handler
-   * @param categoryId id of the unit category
    * @param changedUnitId id of the unit whose input field changed
    * @param e change event
    */

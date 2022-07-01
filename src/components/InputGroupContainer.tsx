@@ -17,7 +17,7 @@ const InputGroupContainer: React.FC<InputGroupContainerProps> = (props) => {
 
   return (
     <div className='mt-2 d-grid gap-2 col-lg-5 mx-auto'>
-      <LinkContainer exact={true} to='/'>
+      <LinkContainer to='/'>
         <Button variant='primary' size='lg'>
           <FaArrowLeft />
           {' '}

@@ -1,6 +1,6 @@
 import React, { ChangeEvent, MouseEvent } from 'react';
 import Button from 'react-bootstrap/Button';
-import FormControl from 'react-bootstrap/FormControl';
+import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { FaCopy } from 'react-icons/fa';
 
@@ -17,9 +17,10 @@ const Input: React.FC<InputProps> = (props) => {
 
   return (
     <InputGroup>
-      <FormControl
+      <Form.Control
         id={props.id}
         inputMode='decimal'
+        type='text'
         value={props.value}
         onChange={props.handleChange}
         autoComplete='off'
