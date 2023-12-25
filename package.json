@@ -1,7 +1,7 @@
 {
   "name": "unit-converter",
   "version": "1.0.0",
-  "homepage": "https://tg2648.github.io/unit-converter/",
+  "homepage": "https://unit-converter.tgul.dev/",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
